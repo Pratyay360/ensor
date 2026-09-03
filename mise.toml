@@ -1,0 +1,14 @@
+[tools]
+claude = "latest"
+dotenv-linter = "latest"
+editorconfig-checker = "latest"
+go = "1.26.5"
+"go:github.com/spf13/cobra-cli" = "latest"
+golangci-lint = "latest"
+
+[deps]
+go = { auto = true }
+
+[tasks.testcase]
+description = "Run Go testcase"
+run = "go run ./test/test.go"
