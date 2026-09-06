@@ -18,6 +18,17 @@ and directories and redact the secrets from the files.
 by default, `ensor` skips scanning any files or directories that starts
 with a trailing dot like `.env` `.env.json` `.git/*` .
 
+
+how to install 
+
+```bash
+mise use github:pratyay360/ensor@latest
+```
+
+```bash
+curl -sSL https://gobinaries.com/pratyay360/ensor@latest | sh
+```
+
 License: apache-2.0
 
 thanks to amazing:
