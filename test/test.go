@@ -172,7 +172,6 @@ func generateShell(root string, secrets []Secret) {
 func generateDuplicates(root string, secrets []Secret) {
 	var b strings.Builder
 
-	// Every 10th secret gets repeated several times.
 	for i, s := range secrets {
 		if i%10 != 0 {
 			continue

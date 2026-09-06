@@ -26,7 +26,7 @@ mise use github:pratyay360/ensor@latest
 ```
 
 ```bash
-curl -sSL https://gobinaries.com/pratyay360/ensor@latest | sh
+curl -sSL https://raw.githubusercontent.com/Pratyay360/ensor/main/install.sh | sh
 ```
 
 License: apache-2.0

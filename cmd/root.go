@@ -52,7 +52,6 @@ func RunScan(dir string) {
 		log.Printf("Error scanning directory: %v\n", err)
 		os.Exit(1)
 	}
-	log.Printf("\n🔍 Scanning directory for secrets using betterleaks...\n")
 
 	findings, err := utils.ScanDirectoryWithBetterleaks(context.Background(), dir, nil, utils.ScanOptions{
 		Validate:    flagValidate,
@@ -63,7 +62,6 @@ func RunScan(dir string) {
 	}
 
 	if err != nil {
-		log.Errorf("Error scanning directory with betterleaks: %v", err)
 		os.Exit(1)
 	}
 
