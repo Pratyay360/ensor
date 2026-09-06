@@ -1,10 +1,7 @@
 [tools]
-claude = "latest"
 dotenv-linter = "latest"
-editorconfig-checker = "latest"
-go = "1.26.5"
+go = "latest"
 "go:github.com/spf13/cobra-cli" = "latest"
-golangci-lint = "latest"
 
 [deps]
 go = { auto = true }
