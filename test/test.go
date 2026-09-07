@@ -20,7 +20,7 @@ type Secret struct {
 
 func main() {
 	const (
-		secretCount = 10
+		secretCount = 100
 		root        = "testdata"
 	)
 	if err := os.RemoveAll(root); err != nil {
