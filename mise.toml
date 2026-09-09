@@ -1,10 +1,8 @@
 [tools]
 dotenv-linter = "latest"
-"github:prefix-dev/rattler-build" = "latest"
 go = "latest"
 "go:github.com/spf13/cobra-cli" = "latest"
 goreleaser = "latest"
-pixi = "latest"
 
 [deps]
 go = { auto = true }
@@ -12,3 +10,15 @@ go = { auto = true }
 [tasks.testcase]
 description = "Run Go testcase"
 run = "go run ./test/test.go"
+
+[tasks.build]
+description = "Build Go binary (snapshot)"
+run = "goreleaser build --snapshot --clean"
+
+[tasks.release-check]
+description = "Validate GoReleaser config"
+run = "goreleaser check"
+
+[tasks.release-snapshot]
+description = "Full snapshot release (archives + packages)"
+run = "goreleaser release --snapshot --clean"

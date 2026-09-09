@@ -1,22 +1,19 @@
-# This is an example .goreleaser.yml file with some sensible defaults.
-# Make sure to check the documentation at https://goreleaser.com
-
-# The lines below are called `modelines`. See `:help modeline`
-# Feel free to remove those if you don't want/need to use them.
 # yaml-language-server: $schema=https://goreleaser.com/static/schema.json
 # vim: set ts=2 sw=2 tw=0 fo=cnqoj
 
 version: 2
 
+project_name: ensor
+
 before:
   hooks:
-    # You may remove this if you don't use go modules.
     - go mod tidy
-    # you may remove this if you don't need go generate
     - go generate ./...
 
 builds:
-  - main: ./...
+  - id: ensor
+    main: .
+    binary: ensor
     env:
       - CGO_ENABLED=0
     goos:
@@ -24,13 +21,22 @@ builds:
       - windows
       - darwin
     goarch:
-      - arm64
       - amd64
+      - arm64
       - "386"
+    ignore:
+      - goos: darwin
+        goarch: "386"
+    flags:
+      - -trimpath
+    ldflags:
+      - -s -w -X github.com/Pratyay360/ensor/cmd.version={{.Version}}
 
 archives:
-  - formats: [tar.gz]
-    # this name template makes the OS and Arch compatible with the results of `uname`.
+  - id: default
+    ids:
+      - ensor
+    formats: [tar.gz]
     name_template: >-
       {{ .ProjectName }}_
       {{- title .Os }}_
@@ -38,21 +44,51 @@ archives:
       {{- else if eq .Arch "386" }}i386
       {{- else }}{{ .Arch }}{{ end }}
       {{- if .Arm }}v{{ .Arm }}{{ end }}
-    # use zip for windows archives
     format_overrides:
       - goos: windows
         formats: [zip]
 
+checksum:
+  name_template: "checksums.txt"
+
 changelog:
   sort: asc
+  use: github
   filters:
     exclude:
       - "^docs:"
       - "^test:"
+  groups:
+    - title: Features
+      regexp: "^feat"
+      order: 0
+    - title: "Bug fixes"
+      regexp: "^fix"
+      order: 1
+    - title: Others
+      order: 999
+
+nfpms:
+  - id: deb-rpm-apk
+    package_name: ensor
+    description: "Censor secrets in your code"
+    homepage: "https://github.com/Pratyay360/ensor"
+    maintainer: "Pratyay360 <pratyaymustafi@outlook.com>"
+    license: "Apache-2.0"
+    formats:
+      - deb
+      - rpm
+      - apk
 
 release:
-  footer: >-
+  github:
+    owner: Pratyay360
+    name: ensor
+  footer: |-
 
     ---
 
     Released by [GoReleaser](https://github.com/goreleaser/goreleaser).
+
+snapshot:
+  version_template: "{{ incpatch .Version }}-next"
