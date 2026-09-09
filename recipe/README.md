@@ -53,4 +53,3 @@ Once the PR passes CI checks and is merged by the conda-forge team:
 - A new repository `conda-forge/ensor-feedstock` is automatically created.
 - Packages are built and published to the `conda-forge` channel.
 - Future versions are updated by submitting PRs to `conda-forge/ensor-feedstock` (or via conda-forge's automated bot).
-

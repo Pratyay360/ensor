@@ -3,3 +3,5 @@ testdata/
 .pixi/*
 !.pixi/config.toml
 ensor
+# Added by goreleaser init:
+dist/
