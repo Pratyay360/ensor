@@ -9,13 +9,12 @@ package:
 
 source:
   url: https://github.com/Pratyay360/ensor/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: 0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef
-  target_directory: src
+  sha256: a9e09ef5ea1b1d60fc6a638998bc906d1b1df647065630f0c3cfb3ed77300865
+  target_directory: ./
 
 build:
   number: 0
   script:
-    - cd src
     - go-licenses save . --save_path ../library_licenses
     - if: unix
       then: go build -v -o $PREFIX/bin/ensor -ldflags="-s -w" .
