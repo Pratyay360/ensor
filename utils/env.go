@@ -14,8 +14,6 @@ const DotEnvFile = ".env"
 
 const EnvJSONFile = "env.json"
 
-// unescapeDoubleQuoted resolves the \\ and \" escapes inside a
-// double-quoted dotenv value. Any other backslash sequence is kept as-is.
 func unescapeDoubleQuoted(s string) string {
 	if !strings.Contains(s, `\`) {
 		return s
