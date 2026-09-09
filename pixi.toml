@@ -1,0 +1,21 @@
+[workspace]
+authors = ["PRATYAY MUSTAFI <pratyaymustafi@outlook.com>"]
+channels = ["conda-forge"]
+name = "ensor"
+repository = "https://github.com/Pratyay360/ensor"
+homepage = "https://docs.pratyay.qzz.io/guides/1788717438/"
+documentation = "https://docs.pratyay.qzz.io/guides/1788717438/"
+description = "a cli tool to redact sensitive information from source code"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[workspace.dependencies]
+go = "*"
+rattler-build = "*"
+
+[tasks]
+build = "go build ."
+conda-build = "rattler-build build --recipe recipe/recipe.yaml"
+
+[dependencies]
+go = ">=1.27"

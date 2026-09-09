@@ -1,7 +1,9 @@
 [tools]
 dotenv-linter = "latest"
+"github:prefix-dev/rattler-build" = "latest"
 go = "latest"
 "go:github.com/spf13/cobra-cli" = "latest"
+pixi = "latest"
 
 [deps]
 go = { auto = true }
