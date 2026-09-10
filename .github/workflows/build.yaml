@@ -17,6 +17,10 @@ jobs:
     steps:
       - name: checkout code
         uses: actions/checkout@main
+        with:
+          fetch-depth: 0
+      - name: Trust git directory in container
+        run: git config --global --add safe.directory '*'
 
       - name: Install dependencies & building
         run: |
