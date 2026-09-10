@@ -9,7 +9,7 @@ testcase = { description = "Run Go testcase", run = "go run ./test/test.go" }
 build = { description = "Build Go binary", run = ["mise deps", "mise run fetch", "goreleaser build --snapshot --clean"] }
 test = { description = "test binary", run = ["mise deps", "mise run testcase", "mise run build"] }
 testcases = { description = "Run Go test cases", run = "go test ./..." }
-release = { description = "Build and release using Goreleaser", run = ["goreleaser build", "goreleaser release --snapshot --clean"] }
+release = { description = "Build and release using Goreleaser", run = "goreleaser release --clean" }
 
 
 [deps]
