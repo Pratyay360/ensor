@@ -3,29 +3,13 @@ go = "latest"
 "go:github.com/spf13/cobra-cli" = "latest"
 goreleaser = "latest"
 
+[tasks]
+testcase = { description = "Run Go testcase", run = "go run ./test/test.go" }
+test = { description = "test binary", run = "[mise deps, mise run testcase, mise run build]" }
+build = { description = "Build Go binary", run = "[mise deps, goreleaser build --snapshot --clean]" }
+release = { description = "release", run = "[mise run build, goreleaser]" }
+release-check = { description = "Validate GoReleaser config", run = "[mise deps, goreleaser check]" }
+release-snapshot = { description = "Full snapshot release (archives + packages)", run = "goreleaser release --snapshot --clean" }
+
 [deps]
 go = { auto = true }
-
-[tasks.testcase]
-description = "Run Go testcase"
-run = "go run ./test/test.go"
-
-[tasks.test]
-description = "test binary"
-run = ["mise deps", "mise run testcase", "mise run build"]
-
-[tasks.build]
-description = "Build Go binary"
-run = ['mise deps', 'goreleaser build --snapshot --clean']
-
-[tasks.release]
-description = "release"
-run = ["mise run build", "goreleaser"]
-
-[tasks.release-check]
-description = "Validate GoReleaser config"
-run = ['mise deps', 'goreleaser check']
-
-[tasks.release-snapshot]
-description = "Full snapshot release (archives + packages)"
-run = "goreleaser release --snapshot --clean"

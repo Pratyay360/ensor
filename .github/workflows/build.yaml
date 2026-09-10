@@ -4,6 +4,9 @@ on:
   push:
   workflow_dispatch:
 
+env:
+  MISE_EXPERIMENTAL: true
+
 permissions:
   contents: read
   pages: write
