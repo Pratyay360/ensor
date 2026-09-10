@@ -19,11 +19,14 @@ by default, `ensor` skips scanning any files or directories that starts
 with a trailing dot like `.env` `.env.json` `.git/*` .
 
 
-how to install 
+how to install ?
+
+binaries are available in the release section
 
 ```bash
 mise use github:pratyay360/ensor@latest
 ```
+
 
 ```bash
 curl -sSL https://raw.githubusercontent.com/Pratyay360/ensor/main/install.sh | sh

@@ -14,8 +14,6 @@ var (
 	convertTo   string
 )
 
-// convertCmd converts a flat key=value file between dotenv, JSON, YAML
-// and TOML, in any direction.
 var convertCmd = &cobra.Command{
 	Use:   "convert [input] [output]",
 	Short: "Convert between .env, JSON, YAML and TOML",

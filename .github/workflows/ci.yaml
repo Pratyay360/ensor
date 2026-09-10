@@ -19,12 +19,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@main
         with:
           fetch-depth: 0
 
       - name: Set up Go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@main
         with:
           go-version-file: go.mod
           cache: true
@@ -39,14 +39,14 @@ jobs:
         run: go test ./... -count=1 -timeout 60s
 
       - name: GoReleaser check
-        uses: goreleaser/goreleaser-action@v6
+        uses: goreleaser/goreleaser-action@main
         with:
           distribution: goreleaser
           version: "~> v2"
           args: check
 
       - name: Build snapshot
-        uses: goreleaser/goreleaser-action@v6
+        uses: goreleaser/goreleaser-action@main
         with:
           distribution: goreleaser
           version: "~> v2"
