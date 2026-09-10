@@ -58,12 +58,7 @@ fi
 tar -xzf "$TMPDIR/${ASSET}" -C "$TMPDIR"
 # archive contains binary named 'ensor'
 if [ ! -f "$TMPDIR/ensor" ]; then
-  # fallback: find binary inside
-  BIN="$(find "$TMPDIR" -type f -name 'ensor' | head -n 1)"
-  if [ -z "$BIN" ]; then
-    echo "Binary not found inside archive" >&2; exit 1
-  fi
-  cp "$BIN" "$INSTALL_DIR/ensor"
+  echo "Binary not found inside archive" >&2; exit 1
 else
   cp "$TMPDIR/ensor" "$INSTALL_DIR/ensor"
 fi
