@@ -4,12 +4,13 @@ go = "latest"
 goreleaser = "latest"
 
 [tasks]
+fetch = { description = "Fetch Go module dependencies", run = "go mod download" }
 testcase = { description = "Run Go testcase", run = "go run ./test/test.go" }
-build = { description = "Build Go binary", run = "[mise deps, goreleaser build --snapshot --clean]" }
-test = { description = "test binary", run = "[mise deps, mise run testcase, mise run build]" }
-release = { description = "release", run = "[mise run build, goreleaser]" }
-release-check = { description = "Validate GoReleaser config", run = "[mise deps, goreleaser check]" }
-release-snapshot = { description = "Full snapshot release (archives + packages)", run = "goreleaser release --snapshot --clean" }
+build = { description = "Build Go binary", run = ["mise deps", "mise run fetch", "goreleaser build --snapshot"] }
+test = { description = "test binary", run = ["mise deps", "mise run testcase", "mise run build"] }
+testcases = { description = "Run Go test cases", run = "go test ./..." }
+release = { description = "Build and release using Goreleaser", run = ["goreleaser build", "goreleaser release --snapshot"] }
+
 
 [deps]
 go = { auto = true }
