@@ -1,33 +1,27 @@
-name: Release
+name: ci
 
 on:
   push:
-    tags:
-      - "v*"
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
-  goreleaser:
+  ci:
     runs-on: ubuntu-latest
+    container:
+        image: ghcr.io/jdx/mise:latest
     steps:
-      - name: Checkout
+      - name: checkout code
         uses: actions/checkout@main
-        with:
-          fetch-depth: 0
 
-      - name: Set up Go
-        uses: actions/setup-go@v5
-        with:
-          go-version-file: go.mod
-
-      - name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@v6
-        with:
-          distribution: goreleaser
-          version: "~> v2"
-          args: release --clean
+      - name: Install dependencies & building
+        run: |
+            mise deps
+            mise run fetch
+            mise run release
         env:
           GITHUB_TOKEN: ${{ github.token }}
