@@ -1,52 +1,90 @@
-name: Build & Push to GHCR & Docker Hub
+name: Build and Push Container
 
 on:
   push:
-    branches: [ "main" ]
   workflow_dispatch:
 
 permissions:
   contents: read
   packages: write
   id-token: write
+  attestations: write
+
+env:
+  IMAGE_NAME: ${{ github.event.repository.name }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-      # 1️⃣ Checkout the repo
-      - name: Checkout code
-        uses: actions/checkout@main
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
 
-      # 3️⃣ Log in to the registries
-      - name: Log in to GHCR
-        uses: docker/login-action@v3
+    steps:
+      - uses: actions/checkout@main
+      - name: Install Buildah and Podman
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y buildah podman
+      - name: Build Image
+        uses: redhat-actions/buildah-build@main
+        id: build
+        with:
+          image: ${{ github.repository }}
+          tags: |
+            latest
+            ${{ github.sha }}
+            ${{ github.ref_name }}
+          containerfiles: |
+            ./Containerfile
+
+
+      - name: Login to GHCR
+        uses: redhat-actions/podman-login@main
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ github.token }}
+
+      - name: Push to GHCR
+        id: ghcr
+        uses: redhat-actions/push-to-registry@main
+        with:
+          registry: ghcr.io
+          image: ${{ github.repository }}
+          tags: ${{ steps.build.outputs.tags }}
 
 
-      - name: Log in to Quay
-        uses: docker/login-action@v3
+      # - name: Login to Docker Hub
+      #   uses: redhat-actions/podman-login@main
+      #   with:
+      #     registry: docker.io
+      #     username: ${{ secrets.DOCKER_USERNAME }}
+      #     password: ${{ secrets.DOCKER_PASSWORD }}
+
+      # - name: Push to Docker Hub
+      #   uses: redhat-actions/push-to-registry@main
+      #   with:
+      #     registry: docker.io
+      #     image: ${{ github.repository }}
+      #     tags: ${{ steps.build.outputs.tags }}
+
+
+      - name: Login to Quay
+        uses: redhat-actions/podman-login@main
         with:
           registry: quay.io
           username: ${{ secrets.QUAY_USERNAME }}
           password: ${{ secrets.QUAY_PASSWORD }}
 
-      # 4️⃣ Build and push the image (single set of tags/labels)
-      - name: Build and push image
-        uses: docker/build-push-action@v6
+      - name: Push to Quay
+        uses: redhat-actions/push-to-registry@main
         with:
-          context: .
-          file: ./Containerfile
-          push: true
-          tags: |
-            ghcr.io/${{ github.repository }}:latest
-            # docker.io/${{ github.repository }}:latest
-            quay.io/${{ github.repository }}:latest
-          labels: |
-            org.opencontainers.image.source=${{ github.repositoryUrl }}
-            org.opencontainers.image.revision=${{ github.sha }}
+          registry: quay.io
+          image: ${{ github.repository }}
+          tags: ${{ steps.build.outputs.tags }}
+
+
+      - name: Generate Provenance
+        uses: actions/attest-build-provenance@main
+        with:
+          subject-name: ghcr.io/${{ github.repository }}
+          subject-digest: ${{ steps.ghcr.outputs.digest }}
+          push-to-registry: true
