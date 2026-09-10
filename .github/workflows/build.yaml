@@ -4,9 +4,6 @@ on:
   push:
   workflow_dispatch:
 
-env:
-  MISE_EXPERIMENTAL: true
-
 permissions:
   contents: read
   pages: write
@@ -28,3 +25,4 @@ jobs:
             mise run release
         env:
           GITHUB_TOKEN: ${{ github.token }}
+          MISE_EXPERIMENTAL: true
