@@ -1,5 +1,4 @@
 # yaml-language-server: $schema=https://goreleaser.com/static/schema.json
-# vim: set ts=2 sw=2 tw=0 fo=cnqoj
 
 version: 2
 
@@ -14,22 +13,28 @@ builds:
   - id: ensor
     main: .
     binary: ensor
+
     env:
       - CGO_ENABLED=0
+
     goos:
       - linux
       - windows
       - darwin
       - freebsd
+
     goarch:
       - amd64
       - arm64
       - "386"
+
     ignore:
       - goos: darwin
         goarch: "386"
+
     flags:
       - -trimpath
+
     ldflags:
       - -s -w -X github.com/Pratyay360/ensor/cmd.version={{.Version}}
 
@@ -37,7 +42,10 @@ archives:
   - id: default
     ids:
       - ensor
-    formats: [tar.gz]
+
+    formats:
+      - tar.gz
+
     name_template: >-
       {{ .ProjectName }}_
       {{- title .Os }}_
@@ -45,51 +53,64 @@ archives:
       {{- else if eq .Arch "386" }}i386
       {{- else }}{{ .Arch }}{{ end }}
       {{- if .Arm }}v{{ .Arm }}{{ end }}
+
     format_overrides:
       - goos: windows
-        formats: [zip]
+        formats:
+          - zip
 
 checksum:
-  name_template: "checksums.txt"
+  name_template: checksums.txt
 
 changelog:
   sort: asc
   use: github
+
   filters:
     exclude:
       - "^docs:"
       - "^test:"
+
   groups:
     - title: Features
       regexp: "^feat"
       order: 0
-    - title: "Bug fixes"
+
+    - title: Bug fixes
       regexp: "^fix"
       order: 1
+
     - title: Others
       order: 999
 
 nfpms:
-  - id: deb-rpm-apk
+  - id: packages
     package_name: ensor
     description: "Censor secrets in your code"
     homepage: "https://github.com/Pratyay360/ensor"
     maintainer: "Pratyay360 <pratyaymustafi@outlook.com>"
-    license: "Apache-2.0"
+    license: Apache-2.0
+
     formats:
       - deb
       - rpm
       - apk
 
+homebrew_casks:
+  - name: ensor
+    homepage: "https://github.com/Pratyay360/ensor"
+    description: "Censor secrets in your code"
+    license: Apache-2.0
+    repository:
+      owner: Pratyay360
+      name: homebrew-tap
+      branch: main
+      token: "{{ .Env.GITHUB_TOKEN }}"
+
 release:
   github:
     owner: Pratyay360
     name: ensor
-  footer: |-
-
-    ---
-
-    Released by [GoReleaser](https://github.com/goreleaser/goreleaser).
 
 snapshot:
   version_template: "{{ incpatch .Version }}-next"
