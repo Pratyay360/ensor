@@ -52,19 +52,19 @@ jobs:
           tags: ${{ steps.build.outputs.tags }}
 
 
-      # - name: Login to Docker Hub
-      #   uses: redhat-actions/podman-login@main
-      #   with:
-      #     registry: docker.io
-      #     username: ${{ secrets.DOCKER_USERNAME }}
-      #     password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Login to Docker Hub
+        uses: redhat-actions/podman-login@main
+        with:
+          registry: docker.io
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # - name: Push to Docker Hub
-      #   uses: redhat-actions/push-to-registry@main
-      #   with:
-      #     registry: docker.io
-      #     image: ${{ github.repository }}
-      #     tags: ${{ steps.build.outputs.tags }}
+      - name: Push to Docker Hub
+        uses: redhat-actions/push-to-registry@main
+        with:
+          registry: docker.io
+          image: ${{ github.repository }}
+          tags: ${{ steps.build.outputs.tags }}
 
 
       - name: Login to Quay
