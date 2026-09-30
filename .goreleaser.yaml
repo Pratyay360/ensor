@@ -101,6 +101,24 @@ homebrew_casks:
     homepage: "https://github.com/Pratyay360/ensor"
     description: "Censor secrets in your code"
     license: Apache-2.0
+
+    binaries:
+      - ensor
+
+    generate_completions_from_executable:
+      executable: ensor
+      args:
+        - completion
+      base_name: ensor
+      shell_parameter_format: cobra
+      shells:
+        - bash
+        - zsh
+        - fish
+
+    directory: Casks
+    commit_msg_template: "Brew cask update for {{ .ProjectName }} version {{ .Tag }}"
+
     repository:
       owner: Pratyay360
       name: homebrew-tap
