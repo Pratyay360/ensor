@@ -123,7 +123,6 @@ homebrew_casks:
       owner: Pratyay360
       name: homebrew-tap
       branch: main
-      token: "{{ .Env.BREW_TOKEN }}"
 
 release:
   github:
