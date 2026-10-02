@@ -31,5 +31,4 @@ jobs:
             mise run release
         env:
           GITHUB_TOKEN: ${{ github.token }}
-          BREW_TOKEN: ${{ secrets.BREW_TOKEN }}
           MISE_EXPERIMENTAL: true
