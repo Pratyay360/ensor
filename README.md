@@ -46,6 +46,13 @@ Watch `ensor` in action:
 
 ## 📦 Installation
 
+### Homebrew
+
+```bash
+brew trust --cask pratyay360/tap/ensor
+brew install pratyay360/tap/ensor
+```
+
 ### mise
 
 ```bash
@@ -57,6 +64,8 @@ mise use github:pratyay360/ensor@latest
 ```bash
 curl -sSL https://raw.githubusercontent.com/Pratyay360/ensor/main/install.sh | sh
 ```
+
+
 
 ### Go Install
 
