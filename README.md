@@ -65,7 +65,11 @@ mise use github:pratyay360/ensor@latest
 curl -sSL https://raw.githubusercontent.com/Pratyay360/ensor/main/install.sh | sh
 ```
 
+### goblin
 
+```bash
+curl -sf http://goblin.run/github.com/pratyay360/ensor | PREFIX=~/.local/bin sh 
+```
 
 ### Go Install
 
