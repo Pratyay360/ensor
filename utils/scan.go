@@ -47,7 +47,7 @@ type ScanOptions struct {
 }
 
 // ScanDirectoryWithBetterleaks recursively scans dir for secrets using the
-// betterleaks detector and returns the findings. 
+// betterleaks detector and returns the findings.
 func ScanDirectoryWithBetterleaks(ctx context.Context, dir string, progress func(string), opts ...ScanOptions) ([]Finding, error) {
 	var opt ScanOptions
 	if len(opts) > 0 {
@@ -97,7 +97,7 @@ func ScanDirectoryWithBetterleaks(ctx context.Context, dir string, progress func
 		Path:            dir,
 		Sema:            detector.Sema,
 		ShouldSkip:      skip,
-		MaxFileSize:     100 * 1000 * 1000, 
+		MaxFileSize:     100 * 1000 * 1000,
 		MaxArchiveDepth: 2,
 	}
 

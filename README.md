@@ -77,9 +77,21 @@ curl -sf http://goblin.run/github.com/pratyay360/ensor | PREFIX=~/.local/bin sh
 go install github.com/Pratyay360/ensor@latest
 ```
 
+### Scoop
+```bash
+scoop bucket add pratyay360
+scoop install pratyay360/ensor
+```
+
+### Winget
+```bash
+winget install pratyay360.ensor
+```
+
 ### Prebuilt Binaries & Packages
 
-Download ready-to-run binaries or `.deb`, `.rpm`, and `.apk` packages from the [Releases](https://github.com/Pratyay360/ensor/releases) page for Linux, macOS, Windows, and FreeBSD.
+Download ready-to-run binaries or `.deb`, `.rpm`, and `.apk` packages from the 
+[Releases](https://github.com/Pratyay360/ensor/releases) page for Linux, macOS, Windows, and FreeBSD.
 
 ---
 
@@ -103,7 +115,7 @@ By default, `ensor` skips scanning any file or directory that starts with a trai
 
 `ensor convert` converts between any format of env files. Convert `.env`, YAML, TOML, JSON, and more — interchangeably.
 
-## 🖥️ Live demos
+## Live demos
 
 **ensor in action**
 

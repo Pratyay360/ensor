@@ -2,8 +2,8 @@ package utils
 
 import (
 	"bufio"
-	"encoding/json"
 	log "charm.land/log/v2"
+	"encoding/json"
 	"fmt"
 	"os"
 	"sort"

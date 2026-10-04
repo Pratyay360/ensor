@@ -125,10 +125,6 @@ func PromptRedactOrSkip(filename string, line int, secretValue string, validatio
 	return choice == "redact", nil
 }
 
-// PromptForSecretNameWithDefault prompts "Enter SECRET Name (default:
-// <suggestion>)" and returns the chosen name. Pressing Enter accepts the
-// suggestion. Empty, malformed, or already-taken names are rejected with a
-// reprompt; exists reports whether a name is already used.
 func PromptForSecretNameWithDefault(suggestion string, exists func(string) bool) (string, error) {
 	for {
 		var input string
