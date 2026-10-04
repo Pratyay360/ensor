@@ -22,6 +22,7 @@ builds:
       - windows
       - darwin
       - freebsd
+      - openbsd
 
     goarch:
       - amd64
@@ -123,6 +124,38 @@ homebrew_casks:
       owner: Pratyay360
       name: homebrew-tap
       branch: main
+scoops:
+  - name: ensor
+    homepage: "https://github.com/pratyay360/ensor"
+    description: "A simple git helper"
+    license: Apache-2.0
+    commit_msg_template: "Scoop update for {{ .ProjectName }} version {{ .Tag }}"
+    skip_upload: false
+
+    repository:
+      owner: pratyay360
+      name: scoop-bucket
+      branch: main
+
+winget:
+  - name: ensor
+    publisher: pratyay360
+    publisher_url: "https://github.com/pratyay360"
+    publisher_support_url: "https://github.com/pratyay360/ensor/issues"
+    package_identifier: pratyay360.ensor
+    short_description: "A simple git helper"
+    description: "A unified CLI for your git forges"
+    license: Apache-2.0
+    homepage: "https://github.com/pratyay360/ensor"
+    commit_msg_template: "{{ .PackageIdentifier }}: {{ .Tag }}"
+    skip_upload: false
+
+    repository:
+      owner: pratyay360
+      name: winget-pkgs
+      branch: main
+
+
 
 release:
   github:
