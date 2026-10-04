@@ -21,11 +21,11 @@ var (
 )
 
 var rootCmd = &cobra.Command{
-	Use:   "ensor [directory]",
-	Short: "Scan files and folders for secrets and censor them",
-	Long:  `Walk the directory recursively, scan files for secrets, censor them + store them in .env`,
+	Use:     "ensor [directory]",
+	Short:   "Scan files and folders for secrets and censor them",
+	Long:    `Walk the directory recursively, scan files for secrets, censor them + store them in .env`,
 	Version: version,
-	Args:  cobra.MaximumNArgs(1),
+	Args:    cobra.MaximumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		dir := "."
 		if len(args) > 0 {
