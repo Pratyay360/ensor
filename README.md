@@ -79,7 +79,7 @@ go install github.com/Pratyay360/ensor@latest
 
 ### Scoop
 ```bash
-scoop bucket add pratyay360
+scoop bucket add pratyay360 https://github.com/pratyay360/scoop-bucket
 scoop install pratyay360/ensor
 ```
 
