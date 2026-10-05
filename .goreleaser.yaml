@@ -137,7 +137,7 @@ scoops:
       branch: main
 
 winget:
-  - name: wingetw
+  - name: winget
     publisher: Pratyay360
     publisher_url: "https://github.com/Pratyay360"
     publisher_support_url: "https://github.com/Pratyay360/ensor/issues"
