@@ -127,7 +127,7 @@ homebrew_casks:
 scoops:
   - name: ensor
     homepage: "https://github.com/Pratyay360/ensor"
-    description: "A simple git helper"
+    description: "A simple tool to censor secrets in your code"
     license: Apache-2.0
     commit_msg_template: "Scoop update for {{ .ProjectName }} version {{ .Tag }}"
 
@@ -142,8 +142,8 @@ winget:
     publisher_url: "https://github.com/Pratyay360"
     publisher_support_url: "https://github.com/Pratyay360/ensor/issues"
     package_identifier: pratyay360.ensor
-    short_description: "A simple git helper"
-    description: "A unified CLI for your git forges"
+    short_description: "A simple tool to censor secrets in your code"
+    description: "A simple tool to censor secrets in your code"
     license: Apache-2.0
     homepage: "https://github.com/Pratyay360/ensor"
     commit_msg_template: "{{ .PackageIdentifier }}: {{ .Tag }}"
