@@ -83,7 +83,7 @@ scoop bucket add pratyay360 https://github.com/pratyay360/scoop-bucket
 scoop install pratyay360/ensor
 ```
 
-### Winget
+### Winget (not yet available)
 ```bash
 winget install pratyay360.ensor
 ```
@@ -111,7 +111,7 @@ By default, `ensor` skips scanning any file or directory that starts with a trai
 
 > Run `ensor --help` to see all available options.
 
-### Convert env files
+## Convert env files
 
 `ensor convert` converts between any format of env files. Convert `.env`, YAML, TOML, JSON, and more — interchangeably.
 

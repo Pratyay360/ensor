@@ -7,7 +7,7 @@ import (
 	"crypto/rand"
 	"encoding/hex"
 	"fmt"
-	"math/big"
+
 	"os"
 	"path/filepath"
 	"strings"
@@ -223,15 +223,6 @@ func randomSecret(n int) string {
 	}
 
 	return hex.EncodeToString(buf)
-}
-
-func randomInt(max int64) int64 {
-	n, err := rand.Int(rand.Reader, big.NewInt(max))
-	if err != nil {
-		panic(err)
-	}
-
-	return n.Int64()
 }
 
 func must(err error) {

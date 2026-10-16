@@ -21,7 +21,6 @@ const (
 	FormatTOML EnvFormat = "toml"
 )
 
-// NormalizeEnvFormat maps a --from/--to flag value to an EnvFormat.
 func NormalizeEnvFormat(s string) (EnvFormat, error) {
 	switch EnvFormat(strings.ToLower(strings.TrimSpace(s))) {
 	case FormatEnv, "dotenv":
@@ -37,7 +36,6 @@ func NormalizeEnvFormat(s string) (EnvFormat, error) {
 	}
 }
 
-// DetectEnvFormat infers the format from the file extension.
 func DetectEnvFormat(path string) (EnvFormat, error) {
 	lower := strings.ToLower(path)
 	switch {
@@ -54,7 +52,6 @@ func DetectEnvFormat(path string) (EnvFormat, error) {
 	}
 }
 
-// ParseEnvFile reads path as a flat string map in the given format.
 func ParseEnvFile(path string, format EnvFormat) (map[string]string, error) {
 	switch format {
 	case FormatEnv:
