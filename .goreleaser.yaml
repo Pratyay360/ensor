@@ -66,6 +66,7 @@ checksum:
 changelog:
   sort: asc
   use: github
+  disable: true
 
   filters:
     exclude:
