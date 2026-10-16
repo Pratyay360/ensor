@@ -8,7 +8,12 @@ import (
 	huh "charm.land/huh/v2"
 	lipgloss "charm.land/lipgloss/v2"
 	log "charm.land/log/v2"
+	"github.com/charmbracelet/x/term"
 )
+
+func IsInteractive() bool {
+	return term.IsTerminal(os.Stdin.Fd())
+}
 
 func SecretOnLine(filePath string, lineNum int, secretValue string) (bool, error) {
 	contentBytes, err := os.ReadFile(filePath)

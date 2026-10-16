@@ -144,12 +144,22 @@ func RunScan(dir string) {
 		return "SECRET_" + string(b)
 	}
 
+	interactive := utils.IsInteractive()
+	if !interactive {
+		log.Warnf("No interactive terminal detected: secrets will be reported but not redacted")
+	}
+
 	for _, secret := range order {
 		hit := hits[secret]
 
 		if name, ok := secretToName[secret]; ok {
 			log.Infof("✅ Known secret in %s (line %d) maps to %s", hit.file, hit.line, utils.PlaceholderFor(name, flagFormat))
 			redactions = append(redactions, redaction{name, secret})
+			continue
+		}
+
+		if !interactive {
+			log.Infof("⏭️  Skipped secret in %s (line %d) (no interactive terminal)", hit.file, hit.line)
 			continue
 		}
 
