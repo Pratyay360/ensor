@@ -14,8 +14,6 @@ permissions:
 jobs:
   ci:
     runs-on: ubuntu-latest
-    container:
-        image: ghcr.io/jdx/mise:2026.8.16
     steps:
       - name: checkout code
         uses: actions/checkout@main
@@ -24,11 +22,14 @@ jobs:
       - name: Trust git directory in container
         run: git config --global --add safe.directory '*'
 
+      - name: Setup aqua
+        uses: aquaproj/aqua-installer@v4
+        with:
+          aqua_version: v2.64.0
+
       - name: Install dependencies & building
         run: |
-            mise deps
-            mise fetch
-            mise run release
+            aqua i
+            goreleaser release --clean
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
-          MISE_EXPERIMENTAL: true

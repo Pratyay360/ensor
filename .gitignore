@@ -5,3 +5,4 @@ testdata/
 ensor
 # Added by goreleaser init:
 dist/
+.atuin/
