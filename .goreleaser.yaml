@@ -88,7 +88,7 @@ changelog:
 nfpms:
   - id: packages
     package_name: ensor
-    description: "Censor secrets in your code"
+    description: "Censor secrets from code base"
     homepage: "https://github.com/Pratyay360/ensor"
     maintainer: "Pratyay360 <pratyaymustafi@outlook.com>"
     license: Apache-2.0
@@ -101,7 +101,7 @@ nfpms:
 homebrew_casks:
   - name: ensor
     homepage: "https://github.com/Pratyay360/ensor"
-    description: "Censor secrets in your code"
+    description: "Censor secrets from code base"
     license: Apache-2.0
 
     binaries:
@@ -119,7 +119,7 @@ homebrew_casks:
         - fish
 
     directory: Casks
-    commit_msg_template: "Brew cask update for {{ .ProjectName }} version {{ .Tag }}"
+    commit_msg_template: "Brew update for {{ .ProjectName }} version {{ .Tag }}"
 
     repository:
       owner: Pratyay360
@@ -128,7 +128,7 @@ homebrew_casks:
 scoops:
   - name: ensor
     homepage: "https://github.com/Pratyay360/ensor"
-    description: "A simple tool to censor secrets in your code"
+    description: "A simple tool to censor secrets from code base"
     license: Apache-2.0
     commit_msg_template: "Scoop update for {{ .ProjectName }} version {{ .Tag }}"
 
@@ -143,8 +143,8 @@ winget:
     publisher_url: "https://github.com/Pratyay360"
     publisher_support_url: "https://github.com/Pratyay360/ensor/issues"
     package_identifier: pratyay360.ensor
-    short_description: "A simple tool to censor secrets in your code"
-    description: "A simple tool to censor secrets in your code"
+    short_description: "A simple tool to censor secrets from code base"
+    description: "A simple tool to censor secrets from code base"
     license: Apache-2.0
     homepage: "https://github.com/Pratyay360/ensor"
     commit_msg_template: "{{ .PackageIdentifier }}: {{ .Tag }}"
