@@ -28,6 +28,7 @@ builds:
       - amd64
       - arm64
       - "386"
+      - x86_64
 
     ignore:
       - goos: darwin
@@ -88,7 +89,7 @@ changelog:
 nfpms:
   - id: packages
     package_name: ensor
-    description: "Censor secrets from code base"
+    description: "Censor/redact secrets from code base"
     homepage: "https://github.com/Pratyay360/ensor"
     maintainer: "Pratyay360 <pratyaymustafi@outlook.com>"
     license: Apache-2.0
@@ -97,11 +98,12 @@ nfpms:
       - deb
       - rpm
       - apk
+      - archlinux
 
 homebrew_casks:
   - name: ensor
     homepage: "https://github.com/Pratyay360/ensor"
-    description: "Censor secrets from code base"
+    description: "Censor/redact secrets from code base"
     license: Apache-2.0
 
     binaries:
