@@ -2,30 +2,7 @@
   <img alt="header" src="https://shieldcn.dev/header/surface.svg?title=ENSOR&amp;subtitle=Censor+secrets+from+code&amp;mode=dark" />
 </p>
 
-<p align="center">
-<picture><source media="(prefers-color-scheme: dark)" srcset="https://www.shieldcn.dev/github/stars/pratyay360/ensor.svg?variant=secondary&amp;mode=dark&amp;theme=emerald&amp;font=jetbrains-mono"><img alt="GitHub Stars" src="https://www.shieldcn.dev/github/stars/pratyay360/ensor.svg?variant=secondary&amp;mode=light&amp;theme=emerald&amp;font=jetbrains-mono"></picture>
-<picture><source media="(prefers-color-scheme: dark)" srcset="https://www.shieldcn.dev/github/forks/pratyay360/ensor.svg?variant=secondary&amp;mode=dark&amp;theme=emerald&amp;font=jetbrains-mono"><img alt="GitHub Forks" src="https://www.shieldcn.dev/github/forks/pratyay360/ensor.svg?variant=secondary&amp;mode=light&amp;theme=emerald&amp;font=jetbrains-mono"></picture>
-<picture><source media="(prefers-color-scheme: dark)" srcset="https://www.shieldcn.dev/github/watchers/pratyay360/ensor.svg?variant=secondary&amp;mode=dark&amp;theme=emerald&amp;font=jetbrains-mono"><img alt="Watchers" src="https://www.shieldcn.dev/github/watchers/pratyay360/ensor.svg?variant=secondary&amp;mode=light&amp;theme=emerald&amp;font=jetbrains-mono"></picture>
-<picture><source media="(prefers-color-scheme: dark)" srcset="https://www.shieldcn.dev/github/branches/pratyay360/ensor.svg?variant=ghost&amp;mode=dark&amp;theme=emerald&amp;font=jetbrains-mono"><img alt="Branches" src="https://www.shieldcn.dev/github/branches/pratyay360/ensor.svg?variant=ghost&amp;mode=light&amp;theme=emerald&amp;font=jetbrains-mono"></picture>
-<picture><source media="(prefers-color-scheme: dark)" srcset="https://www.shieldcn.dev/github/contributors/pratyay360/ensor.svg?theme=emerald&amp;mode=dark&amp;font=jetbrains-mono"><img alt="Contributors" src="https://www.shieldcn.dev/github/contributors/pratyay360/ensor.svg?theme=emerald&amp;mode=light&amp;font=jetbrains-mono"></picture>
-<picture><source media="(prefers-color-scheme: dark)" srcset="https://www.shieldcn.dev/github/last-commit/pratyay360/ensor.svg?variant=secondary&amp;mode=dark&amp;theme=emerald&amp;font=jetbrains-mono"><img alt="Last commit" src="https://www.shieldcn.dev/github/last-commit/pratyay360/ensor.svg?variant=secondary&amp;mode=light&amp;theme=emerald&amp;font=jetbrains-mono"></picture>
-<picture><source media="(prefers-color-scheme: dark)" srcset="https://www.shieldcn.dev/github/commits/pratyay360/ensor.svg?variant=secondary&amp;mode=dark&amp;theme=emerald&amp;font=jetbrains-mono"><img alt="Commits" src="https://www.shieldcn.dev/github/commits/pratyay360/ensor.svg?variant=secondary&amp;mode=light&amp;theme=emerald&amp;font=jetbrains-mono"></picture>
-<picture><source media="(prefers-color-scheme: dark)" srcset="https://www.shieldcn.dev/github/open-issues/pratyay360/ensor.svg?variant=secondary&amp;mode=dark&amp;theme=emerald&amp;font=jetbrains-mono"><img alt="Open issues" src="https://www.shieldcn.dev/github/open-issues/pratyay360/ensor.svg?variant=secondary&amp;mode=light&amp;theme=emerald&amp;font=jetbrains-mono"></picture>
-<picture><source media="(prefers-color-scheme: dark)" srcset="https://www.shieldcn.dev/github/closed-issues/pratyay360/ensor.svg?variant=ghost&amp;mode=dark&amp;theme=emerald&amp;font=jetbrains-mono"><img alt="Closed issues" src="https://www.shieldcn.dev/github/closed-issues/pratyay360/ensor.svg?variant=ghost&amp;mode=light&amp;theme=emerald&amp;font=jetbrains-mono"></picture>
-<picture><source media="(prefers-color-scheme: dark)" srcset="https://www.shieldcn.dev/github/open-prs/pratyay360/ensor.svg?variant=secondary&amp;mode=dark&amp;theme=emerald&amp;font=jetbrains-mono"><img alt="Open PRs" src="https://www.shieldcn.dev/github/open-prs/pratyay360/ensor.svg?variant=secondary&amp;mode=light&amp;theme=emerald&amp;font=jetbrains-mono"></picture>
-<picture><source media="(prefers-color-scheme: dark)" srcset="https://www.shieldcn.dev/github/closed-prs/pratyay360/ensor.svg?variant=ghost&amp;mode=dark&amp;theme=emerald&amp;font=jetbrains-mono"><img alt="Closed PRs" src="https://www.shieldcn.dev/github/closed-prs/pratyay360/ensor.svg?variant=ghost&amp;mode=light&amp;theme=emerald&amp;font=jetbrains-mono"></picture>
-<picture><source media="(prefers-color-scheme: dark)" srcset="https://www.shieldcn.dev/github/merged-prs/pratyay360/ensor.svg?variant=ghost&amp;mode=dark&amp;theme=emerald&amp;font=jetbrains-mono"><img alt="Merged PRs" src="https://www.shieldcn.dev/github/merged-prs/pratyay360/ensor.svg?variant=ghost&amp;mode=light&amp;theme=emerald&amp;font=jetbrains-mono"></picture>
-<picture><source media="(prefers-color-scheme: dark)" srcset="https://www.shieldcn.dev/github/release/pratyay360/ensor.svg?mode=dark&amp;theme=emerald&amp;font=jetbrains-mono"><img alt="Release" src="https://www.shieldcn.dev/github/release/pratyay360/ensor.svg?mode=light&amp;theme=emerald&amp;font=jetbrains-mono"></picture>
-<picture><source media="(prefers-color-scheme: dark)" srcset="https://www.shieldcn.dev/github/ci/pratyay360/ensor.svg?variant=secondary&amp;mode=dark&amp;theme=emerald&amp;font=jetbrains-mono"><img alt="CI" src="https://www.shieldcn.dev/github/ci/pratyay360/ensor.svg?variant=secondary&amp;mode=light&amp;theme=emerald&amp;font=jetbrains-mono"></picture>
-<picture><source media="(prefers-color-scheme: dark)" srcset="https://www.shieldcn.dev/github/license/pratyay360/ensor.svg?variant=ghost&amp;mode=dark&amp;theme=emerald&amp;font=jetbrains-mono"><img alt="License" src="https://www.shieldcn.dev/github/license/pratyay360/ensor.svg?variant=ghost&amp;mode=light&amp;theme=emerald&amp;font=jetbrains-mono"></picture>
-
-</p>
-
-**ensor** is a fast, interactive CLI tool for **detecting and redacting
-secrets from your codebase** and **managing environment variable
-configurations** — ensuring leaked API keys, tokens, and credentials
-never make it into a commit, screenshot, or public release.
-
+**ensor** is a fast, interactive CLI tool for detecting and redacting secrets from codebase.
 By default, `ensor` extracts discovered secrets into a `.env` file and substitutes them with customizable placeholders across your project, but also includes a versatile converter for `.env`, JSON, YAML, and TOML.
 
 ---
@@ -36,7 +13,6 @@ By default, `ensor` extracts discovered secrets into a `.env` file and substitut
 - 🔄 **Format conversion** — convert between `.env`, JSON, YAML, TOML, and more
 - 📁 **Smart skipping** — dot-prefixed files like `.env` and `.git/*` are ignored by default
 - 🎨 **Beautiful TUI** — interactive prompts built with [huh](https://github.com/charmbracelet/huh) and [bubbletea](https://github.com/charmbracelet/bubbletea)
-- ⚡ **Zero config** — no config files, no setup. Just run it.
 
 ## 🎬 Demo
 
@@ -77,9 +53,29 @@ curl -sf http://goblin.run/github.com/pratyay360/ensor | PREFIX=~/.local/bin sh
 go install github.com/Pratyay360/ensor@latest
 ```
 
+### Scoop
+```bash
+scoop bucket add pratyay360 https://github.com/pratyay360/scoop-bucket
+scoop install pratyay360/ensor
+```
+
+### Winget (not yet available)
+```bash
+winget install pratyay360.ensor
+```
+
+### Aqua registry
+
+```bash
+aqua install Pratyay360/ensor
+```
+
+
+
 ### Prebuilt Binaries & Packages
 
-Download ready-to-run binaries or `.deb`, `.rpm`, and `.apk` packages from the [Releases](https://github.com/Pratyay360/ensor/releases) page for Linux, macOS, Windows, and FreeBSD.
+Download ready-to-run binaries or `.deb`, `.rpm`, and `.apk` packages from the 
+[Releases](https://github.com/Pratyay360/ensor/releases) page for Linux, macOS, Windows, and FreeBSD.
 
 ---
 
@@ -93,17 +89,25 @@ Scan the current directory:
 ensor
 ```
 
-That's it. `ensor` walks all the files and directories in your project and redacts the secrets from them.
+interactive mode feels slow and boring try.
+
+```bash
+ensor --yolo
+```
+
+for automatic redaction of secrets from the entire codebase.
+
+That's it. `ensor` walks all the files and directories in codebase and detects + redacts the secrets from there.
 
 By default, `ensor` skips scanning any file or directory that starts with a trailing dot, like `.env`, `.env.json`, or `.git/*` — so your actual secret files stay untouched.
 
 > Run `ensor --help` to see all available options.
 
-### Convert env files
+## Convert env files
 
 `ensor convert` converts between any format of env files. Convert `.env`, YAML, TOML, JSON, and more — interchangeably.
 
-## 🖥️ Live demos
+## Live demos
 
 **ensor in action**
 
@@ -111,7 +115,9 @@ By default, `ensor` skips scanning any file or directory that starts with a trai
 
 **ensor convert**
 
+
 [![asciicast](https://asciinema.org/a/1264777.svg)](https://asciinema.org/a/1264777)
+
 
 ---
 
@@ -126,14 +132,5 @@ Contributions are always welcome! Feel free to open an issue or submit a pull re
 Licensed under the [Apache-2.0](./LICENSE) license.
 
 ---
-
-## 💎 Acknowledgements
-
-Special thanks to these amazing open-source projects:
-
-- [betterleaks](https://github.com/betterleaks/betterleaks) — High-performance secret detection engine
-- [huh](https://github.com/charmbracelet/huh) — Interactive prompt and form toolkit
-- [bubbletea](https://github.com/charmbracelet/bubbletea) — Terminal UI runtime
-- [lipgloss](https://github.com/charmbracelet/lipgloss) — Style definitions for terminal applications
 
 ![chart](https://shieldcn.dev/chart/github/stars/Pratyay360/ensor.svg?theme=emerald&bg=transparent)

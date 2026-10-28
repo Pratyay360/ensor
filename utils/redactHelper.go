@@ -5,10 +5,17 @@ import (
 	"os"
 	"strings"
 
+	"charm.land/bubbles/v2/key"
+	tea "charm.land/bubbletea/v2"
 	huh "charm.land/huh/v2"
 	lipgloss "charm.land/lipgloss/v2"
 	log "charm.land/log/v2"
+	"github.com/charmbracelet/x/term"
 )
+
+func IsInteractive() bool {
+	return term.IsTerminal(os.Stdin.Fd())
+}
 
 func SecretOnLine(filePath string, lineNum int, secretValue string) (bool, error) {
 	contentBytes, err := os.ReadFile(filePath)
@@ -102,36 +109,110 @@ func renderSecretBox(filename string, line int, secretValue string, validationSt
 	fmt.Println(box)
 }
 
-func PromptRedactOrSkip(filename string, line int, secretValue string, validationStatus string) (bool, error) {
+const (
+	ActionRedact = "redact"
+	ActionSkip   = "skip"
+	ActionQuit   = "quit"
+)
+
+type hotkeySelect struct {
+	*huh.Select[string]
+	choice *string
+}
+
+func newHotkeySelect(choice *string) *hotkeySelect {
+	return &hotkeySelect{
+		Select: huh.NewSelect[string](),
+		choice: choice,
+	}
+}
+
+func (h *hotkeySelect) Update(msg tea.Msg) (huh.Model, tea.Cmd) {
+	if keyMsg, ok := msg.(tea.KeyPressMsg); ok {
+		switch strings.ToLower(keyMsg.String()) {
+		case "r":
+			*h.choice = ActionRedact
+			return h, huh.NextField
+		case "s":
+			*h.choice = ActionSkip
+			return h, huh.NextField
+		case "q":
+			*h.choice = ActionQuit
+			return h, huh.NextField
+		}
+	}
+	m, cmd := h.Select.Update(msg)
+	if sel, ok := m.(*huh.Select[string]); ok {
+		h.Select = sel
+	}
+	return h, cmd
+}
+
+func (h *hotkeySelect) GetValue() any {
+	if h.choice != nil && *h.choice != "" {
+		return *h.choice
+	}
+	return h.Select.GetValue()
+}
+
+func (h *hotkeySelect) WithTheme(t huh.Theme) huh.Field {
+	h.Select.WithTheme(t)
+	return h
+}
+
+func (h *hotkeySelect) WithKeyMap(k *huh.KeyMap) huh.Field {
+	h.Select.WithKeyMap(k)
+	return h
+}
+
+func (h *hotkeySelect) WithWidth(w int) huh.Field {
+	h.Select.WithWidth(w)
+	return h
+}
+
+func (h *hotkeySelect) WithHeight(ht int) huh.Field {
+	h.Select.WithHeight(ht)
+	return h
+}
+
+func (h *hotkeySelect) WithPosition(p huh.FieldPosition) huh.Field {
+	h.Select.WithPosition(p)
+	return h
+}
+
+func PromptRedactOrSkip(filename string, line int, secretValue string, validationStatus string) (string, error) {
 	renderSecretBox(filename, line, secretValue, validationStatus)
 
 	var choice string
+	sel := newHotkeySelect(&choice)
+	sel.
+		Title("Redact or skip?").
+		Description("Choose whether to redact this secret, skip it, or quit").
+		Options(
+			huh.NewOption("Redact (r)", ActionRedact),
+			huh.NewOption("Skip (s)", ActionSkip),
+			huh.NewOption("Quit (q)", ActionQuit),
+		).
+		Value(&choice)
+
+	km := huh.NewDefaultKeyMap()
+	km.Quit = key.NewBinding(key.WithKeys("ctrl+c", "esc"))
+
 	form := huh.NewForm(
-		huh.NewGroup(
-			huh.NewSelect[string]().
-				Title("Redact or skip?").
-				Description("Choose whether to redact this secret or skip it").
-				Options(
-					huh.NewOption("Redact (r)", "redact"),
-					huh.NewOption("Skip (s)", "skip"),
-				).
-				Value(&choice),
-		),
-	).WithTheme(customTheme{})
+		huh.NewGroup(sel),
+	).WithTheme(customTheme{}).WithKeyMap(km)
 
 	if err := form.Run(); err != nil {
-		return false, err
+		return "", err
 	}
-	return choice == "redact", nil
+	return choice, nil
 }
 
-// PromptForSecretNameWithDefault prompts "Enter SECRET Name (default:
-// <suggestion>)" and returns the chosen name. Pressing Enter accepts the
-// suggestion. Empty, malformed, or already-taken names are rejected with a
-// reprompt; exists reports whether a name is already used.
 func PromptForSecretNameWithDefault(suggestion string, exists func(string) bool) (string, error) {
 	for {
 		var input string
+		km := huh.NewDefaultKeyMap()
+		km.Quit = key.NewBinding(key.WithKeys("ctrl+c", "esc"))
 		form := huh.NewForm(
 			huh.NewGroup(
 				huh.NewInput().
@@ -149,7 +230,7 @@ func PromptForSecretNameWithDefault(suggestion string, exists func(string) bool)
 						return nil
 					}),
 			),
-		).WithTheme(customTheme{})
+		).WithTheme(customTheme{}).WithKeyMap(km)
 
 		if err := form.Run(); err != nil {
 			return "", err

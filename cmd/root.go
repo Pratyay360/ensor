@@ -2,10 +2,12 @@ package cmd
 
 import (
 	"context"
+	"errors"
 	"math/rand"
 	"os"
 	"sort"
 
+	huh "charm.land/huh/v2"
 	log "charm.land/log/v2"
 	"github.com/Pratyay360/ensor/utils"
 	"github.com/charmbracelet/fang"
@@ -18,14 +20,15 @@ var (
 	flagSkipInvalid bool
 	flagEnvFile     string
 	flagFormat      string
+	flagYolo        bool
 )
 
 var rootCmd = &cobra.Command{
-	Use:   "ensor [directory]",
-	Short: "Scan files and folders for secrets and censor them",
-	Long:  `Walk the directory recursively, scan files for secrets, censor them + store them in .env`,
+	Use:     "ensor [directory]",
+	Short:   "Scan files and folders for secrets and censor them",
+	Long:    `Walk the directory recursively, scan files for secrets, censor them + store them in .env`,
 	Version: version,
-	Args:  cobra.MaximumNArgs(1),
+	Args:    cobra.MaximumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		dir := "."
 		if len(args) > 0 {
@@ -144,6 +147,20 @@ func RunScan(dir string) {
 		return "SECRET_" + string(b)
 	}
 
+	interactive := utils.IsInteractive()
+	if !interactive && !flagYolo {
+		log.Warnf("No interactive terminal detected: secrets will be reported but not redacted")
+	}
+
+	uniqueRandomName := func() string {
+		for {
+			name := randomName()
+			if !taken(name) {
+				return name
+			}
+		}
+	}
+
 	for _, secret := range order {
 		hit := hits[secret]
 
@@ -153,13 +170,35 @@ func RunScan(dir string) {
 			continue
 		}
 
-		redact, errPrompt := utils.PromptRedactOrSkip(hit.file, hit.line, secret, hit.validation)
-		if errPrompt != nil || !redact {
+		if flagYolo {
+			name := uniqueRandomName()
+			pending[name] = secret
+			secretToName[secret] = name
+			redactions = append(redactions, redaction{name, secret})
+			log.Infof("📝 Queued %s for %s", name, hit.file)
+			continue
+		}
+
+		if !interactive {
+			log.Infof("⏭️  Skipped secret in %s (line %d) (no interactive terminal)", hit.file, hit.line)
+			continue
+		}
+
+		action, errPrompt := utils.PromptRedactOrSkip(hit.file, hit.line, secret, hit.validation)
+		if errors.Is(errPrompt, huh.ErrUserAborted) || action == utils.ActionQuit {
+			log.Infof("🛑 Stopped review early: saving and applying queued redactions")
+			break
+		}
+		if errPrompt != nil || action != utils.ActionRedact {
 			log.Infof("⏭️  Skipped secret in %s (line %d)", hit.file, hit.line)
 			continue
 		}
-		suggestion := randomName()
+		suggestion := uniqueRandomName()
 		name, err := utils.PromptForSecretNameWithDefault(suggestion, taken)
+		if errors.Is(err, huh.ErrUserAborted) {
+			log.Infof("🛑 Stopped review early: saving and applying queued redactions")
+			break
+		}
 		if err != nil {
 			log.Infof("⏭️  Skipped secret in %s (line %d) (prompt cancelled)", hit.file, hit.line)
 			continue
@@ -214,8 +253,10 @@ func init() {
 	rootCmd.Flags().BoolVar(&flagSkipInvalid, "skip-invalid", true, "with --validate, ignore secrets the provider confirmed as invalid")
 	rootCmd.Flags().StringVar(&flagEnvFile, "env-file", utils.DotEnvFile, "dotenv file to append new variables to (never overwrites)")
 	rootCmd.Flags().StringVar(&flagFormat, "format", utils.FormatBraced, "replacement placeholder style: braced (${NAME}), shell ($NAME) or node (process.env.NAME)")
+	rootCmd.Flags().BoolVar(&flagYolo, "yolo", false, "automatically redact all secrets without prompting")
 	redactCmd.Flags().BoolVar(&flagValidate, "validate", false, "verify secrets against their providers to cut false positives (requires network access)")
 	redactCmd.Flags().BoolVar(&flagSkipInvalid, "skip-invalid", true, "with --validate, ignore secrets the provider confirmed as invalid")
 	redactCmd.Flags().StringVar(&flagEnvFile, "env-file", utils.DotEnvFile, "dotenv file to append new variables to (never overwrites)")
 	redactCmd.Flags().StringVar(&flagFormat, "format", utils.FormatBraced, "replacement placeholder style: braced (${NAME}), shell ($NAME) or node (process.env.NAME)")
+	redactCmd.Flags().BoolVar(&flagYolo, "yolo", false, "automatically redact all secrets without prompting")
 }

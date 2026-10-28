@@ -35,7 +35,16 @@ func DiscoverFiles(root string) ([]string, error) {
 
 	err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
-			return err
+			// Not being able to inspect the root itself is fatal, but any
+			// other unreadable entry (permissions, races, ...) should be
+			// skipped so a single entry can't abort the whole walk.
+			if path == root {
+				return err
+			}
+			if info != nil && info.IsDir() {
+				return filepath.SkipDir
+			}
+			return nil
 		}
 
 		if IgnoreFile(path, root) {

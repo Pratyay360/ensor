@@ -73,7 +73,7 @@ Examples:
 	},
 }
 
-func resolveConvertFormat(flag, path, name string) (utils.EnvFormat, error) {
+func resolveConvertFormat(flag, path, _ string) (utils.EnvFormat, error) {
 	if flag != "" {
 		return utils.NormalizeEnvFormat(flag)
 	}

@@ -66,6 +66,7 @@ checksum:
 changelog:
   sort: asc
   use: github
+  disable: true
 
   filters:
     exclude:
@@ -87,7 +88,7 @@ changelog:
 nfpms:
   - id: packages
     package_name: ensor
-    description: "Censor secrets in your code"
+    description: "Censor secrets from code base"
     homepage: "https://github.com/Pratyay360/ensor"
     maintainer: "Pratyay360 <pratyaymustafi@outlook.com>"
     license: Apache-2.0
@@ -100,7 +101,7 @@ nfpms:
 homebrew_casks:
   - name: ensor
     homepage: "https://github.com/Pratyay360/ensor"
-    description: "Censor secrets in your code"
+    description: "Censor secrets from code base"
     license: Apache-2.0
 
     binaries:
@@ -118,7 +119,7 @@ homebrew_casks:
         - fish
 
     directory: Casks
-    commit_msg_template: "Brew cask update for {{ .ProjectName }} version {{ .Tag }}"
+    commit_msg_template: "Brew update for {{ .ProjectName }} version {{ .Tag }}"
 
     repository:
       owner: Pratyay360
@@ -126,34 +127,32 @@ homebrew_casks:
       branch: main
 scoops:
   - name: ensor
-    homepage: "https://github.com/pratyay360/ensor"
-    description: "A simple git helper"
+    homepage: "https://github.com/Pratyay360/ensor"
+    description: "A simple tool to censor/redact secrets from code base"
     license: Apache-2.0
     commit_msg_template: "Scoop update for {{ .ProjectName }} version {{ .Tag }}"
-    skip_upload: false
 
     repository:
-      owner: pratyay360
+      owner: Pratyay360
       name: scoop-bucket
       branch: main
 
 winget:
-  - name: ensor
-    publisher: pratyay360
-    publisher_url: "https://github.com/pratyay360"
-    publisher_support_url: "https://github.com/pratyay360/ensor/issues"
+  - name: winget
+    publisher: Pratyay360
+    publisher_url: "https://github.com/Pratyay360"
+    publisher_support_url: "https://github.com/Pratyay360/ensor/issues"
     package_identifier: pratyay360.ensor
-    short_description: "A simple git helper"
-    description: "A unified CLI for your git forges"
+    short_description: "A simple tool to censor secrets from code base"
+    description: "A simple tool to censor secrets from code base"
     license: Apache-2.0
-    homepage: "https://github.com/pratyay360/ensor"
+    homepage: "https://github.com/Pratyay360/ensor"
     commit_msg_template: "{{ .PackageIdentifier }}: {{ .Tag }}"
-    skip_upload: false
 
     repository:
-      owner: pratyay360
+      owner: Pratyay360
       name: winget-pkgs
-      branch: main
+      branch: ensor
 
 
 
