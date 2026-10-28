@@ -28,7 +28,6 @@ builds:
       - amd64
       - arm64
       - "386"
-      - x86_64
 
     ignore:
       - goos: darwin
