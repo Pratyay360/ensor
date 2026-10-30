@@ -1,9 +1,11 @@
+
 <p align="center">
   <img alt="header" src="https://shieldcn.dev/header/surface.svg?title=ENSOR&amp;subtitle=Censor+secrets+from+code&amp;mode=dark" />
 </p>
 
 **ensor** is a fast, interactive CLI tool for detecting and redacting secrets from codebase.
 By default, `ensor` extracts discovered secrets into a `.env` file and substitutes them with customizable placeholders across your project, but also includes a versatile converter for `.env`, JSON, YAML, and TOML.
+
 
 
 
@@ -118,7 +120,7 @@ By default, `ensor` skips scanning any file or directory that starts with a trai
 
 **ensor in action**
 
-[![asciicast](https://asciinema.org/a/1264776.svg)](https://asciinema.org/a/1264776)
+[![asciicast](https://asciinema.org/a/1270301.svg)](https://asciinema.org/a/1270301)
 
 **ensor convert**
 
@@ -126,18 +128,13 @@ By default, `ensor` skips scanning any file or directory that starts with a trai
 [![asciicast](https://asciinema.org/a/1264777.svg)](https://asciinema.org/a/1264777)
 
 
----
 
-## 🤝 Contributing
+**result ensor**
 
-Contributions are always welcome! Feel free to open an issue or submit a pull request.
-
----
-
-## 📄 License
-
-Licensed under the [Apache-2.0](./LICENSE) license.
+[![asciicast](https://asciinema.org/a/1270303.svg)](https://asciinema.org/a/1270303)
 
 ---
 
 ![chart](https://shieldcn.dev/chart/github/stars/Pratyay360/ensor.svg?theme=emerald&bg=transparent)
+s
+[![releaseszn](https://releaseszn.com/badge/ensor.svg)](https://releaseszn.com/p/ensor)
