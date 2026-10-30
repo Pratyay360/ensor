@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img alt="header" src="https://shieldcn.dev/header/surface.svg?title=ENSOR&amp;subtitle=Censor+secrets+from+code&amp;mode=dark" />
+  <img alt="header" src="https://shieldcn.dev/header/surface.svg?title=ENSOR&amp;subtitle=Censor+secrets+from+code&amp;mode=dark" /> <br/>
 <a href="https://www.producthunt.com/products/ensor-2/reviews/new?utm_source=badge-product_review&utm_medium=badge&utm_source=badge-ensor&#0045;2" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/product_review.svg?product_id=1361958&theme=light" alt="ensor - cli&#0032;tool&#0032;to&#0032;detect&#0032;and&#0032;redact&#0032;secrets | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
 </p>
 
