@@ -5,6 +5,13 @@
 **ensor** is a fast, interactive CLI tool for detecting and redacting secrets from codebase.
 By default, `ensor` extracts discovered secrets into a `.env` file and substitutes them with customizable placeholders across your project, but also includes a versatile converter for `.env`, JSON, YAML, and TOML.
 
+
+
+
+https://github.com/user-attachments/assets/e817c8d7-f4eb-4eee-9cf1-f26c14f055c0
+
+
+
 ---
 
 ## ✨ Features
