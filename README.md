@@ -6,26 +6,21 @@
 **ensor** is a fast, interactive CLI tool for detecting and redacting secrets from codebase.
 By default, `ensor` extracts discovered secrets into a `.env` file and substitutes them with customizable placeholders across your project, but also includes a versatile converter for `.env`, JSON, YAML, and TOML.
 
-
-
-
-
-https://github.com/user-attachments/assets/e817c8d7-f4eb-4eee-9cf1-f26c14f055c0
-
-
-
 ---
 
 ## ✨ Features
 
-- 🔍 **Secret scanning & redaction** — walks all files and directories and redacts secrets automatically
-- 🔄 **Format conversion** — convert between `.env`, JSON, YAML, TOML, and more
-- 📁 **Smart skipping** — dot-prefixed files like `.env` and `.git/*` are ignored by default
-- 🎨 **Beautiful TUI** — interactive prompts built with [huh](https://github.com/charmbracelet/huh) and [bubbletea](https://github.com/charmbracelet/bubbletea)
+> scan for detecting secrets
+> redact secrets from codebase
+> put secrets into a `.env` file
+> convert between different secret formats
 
 ## 🎬 Demo
 
+
 Watch `ensor` in action:
+
+https://github.com/user-attachments/assets/e817c8d7-f4eb-4eee-9cf1-f26c14f055c0
 
 [![ensor](https://img.youtube.com/vi/3d1xLYkeVsA/hqdefault.jpg)](http://www.youtube.com/watch?v=3d1xLYkeVsA "ensor cli")
 
@@ -136,5 +131,6 @@ By default, `ensor` skips scanning any file or directory that starts with a trai
 ---
 
 ![chart](https://shieldcn.dev/chart/github/stars/Pratyay360/ensor.svg?theme=emerald&bg=transparent)
-s
+
+
 [![releaseszn](https://releaseszn.com/badge/ensor.svg)](https://releaseszn.com/p/ensor)
